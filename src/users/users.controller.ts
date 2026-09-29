@@ -2,7 +2,7 @@ import { Controller, Get, Post, Patch, Put, Delete } from '@nestjs/common';
 
 @Controller('users')
 export class UsersController {
-  @Get()
+  @Get('/{:id}')
   public getUsers() {
     return 'You sent a GET request to users endpoint';
   }
