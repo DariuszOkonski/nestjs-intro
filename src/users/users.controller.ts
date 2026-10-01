@@ -9,6 +9,8 @@ import {
   Query,
   Body,
   Req,
+  Headers,
+  Ip,
 } from '@nestjs/common';
 import { Request } from 'express';
 
@@ -17,6 +19,7 @@ export class UsersController {
   // @Get('/{:id}')
   @Get(':id{/:optional}')
   public getUsers(@Param() params: any, @Query() query: any) {
+    // public getUsers(@Param('id') id: any, @Query('limit') limit: any) {
     console.log('GET request');
     console.log('params: ', params);
     console.log('query: ', query);
@@ -25,10 +28,17 @@ export class UsersController {
   }
 
   @Post()
-  public createUsers(@Body() request: any) {
+  public createUsers(
+    @Body() request: any,
+    @Headers() headers: any,
+    @Ip() ip: any,
+  ) {
+    // public createUsers(@Body('email') email: any) {
     // public createUsers(@Req() request: Request) {
     console.log('POST request');
-    console.log(request);
+    console.log('request: ', request);
+    console.log('headers: ', headers);
+    console.log('ip: ', ip);
 
     return 'You sent a POST request to users endpont';
   }
