@@ -11,18 +11,22 @@ import {
   Req,
   Headers,
   Ip,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { Request } from 'express';
 
 @Controller('users')
 export class UsersController {
-  // @Get('/{:id}')
-  @Get(':id{/:optional}')
-  public getUsers(@Param() params: any, @Query() query: any) {
-    // public getUsers(@Param('id') id: any, @Query('limit') limit: any) {
+  @Get('{/:id}')
+  // @Get(':id{/:optional}')
+  // public getUsers(@Param() params: any, @Query() query: any) {
+  public getUsers(
+    @Param('id', ParseIntPipe) id: string | undefined,
+    @Query('limit') limit: string,
+  ) {
     console.log('GET request');
-    console.log('params: ', params);
-    console.log('query: ', query);
+    console.log('params id: ', id);
+    console.log('query limit: ', limit);
 
     return 'You sent a GET request to users endpoint';
   }
