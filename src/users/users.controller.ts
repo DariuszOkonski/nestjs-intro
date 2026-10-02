@@ -12,6 +12,7 @@ import {
   Headers,
   Ip,
   ParseIntPipe,
+  DefaultValuePipe,
 } from '@nestjs/common';
 import { Request } from 'express';
 
@@ -21,12 +22,14 @@ export class UsersController {
   // @Get(':id{/:optional}')
   // public getUsers(@Param() params: any, @Query() query: any) {
   public getUsers(
-    @Param('id', ParseIntPipe) id: string | undefined,
-    @Query('limit') limit: string,
+    @Param('id', ParseIntPipe) id: number | undefined,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
   ) {
     console.log('GET request');
     console.log('params id: ', id);
     console.log('query limit: ', limit);
+    console.log('query page: ', page);
 
     return 'You sent a GET request to users endpoint';
   }
