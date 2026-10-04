@@ -44,8 +44,8 @@ export class UsersController {
     // public createUsers(@Req() request: Request) {
     console.log('POST request');
     console.log('request: ', request);
-    console.log('headers: ', headers);
-    console.log('ip: ', ip);
+    // console.log('headers: ', headers);
+    // console.log('ip: ', ip);
 
     return 'You sent a POST request to users endpont';
   }
