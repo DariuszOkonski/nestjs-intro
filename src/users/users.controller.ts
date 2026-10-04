@@ -1,20 +1,14 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Patch,
-  Put,
-  Delete,
-  Param,
-  Query,
   Body,
-  Req,
-  Headers,
-  Ip,
-  ParseIntPipe,
+  Controller,
   DefaultValuePipe,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Query,
+  ValidationPipe,
 } from '@nestjs/common';
-import { Request } from 'express';
 import { CreateUserDto } from './dtos/create-user.dto';
 
 @Controller('users')
@@ -36,17 +30,9 @@ export class UsersController {
   }
 
   @Post()
-  public createUsers(
-    @Body() request: CreateUserDto,
-    @Headers() headers: any,
-    @Ip() ip: any,
-  ) {
-    // public createUsers(@Body('email') email: any) {
-    // public createUsers(@Req() request: Request) {
+  public createUsers(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
     console.log('POST request');
-    console.log('request: ', request);
-    // console.log('headers: ', headers);
-    // console.log('ip: ', ip);
+    console.log('createUserDto: ', createUserDto);
 
     return 'You sent a POST request to users endpont';
   }
