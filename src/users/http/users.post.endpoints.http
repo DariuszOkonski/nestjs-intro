@@ -7,10 +7,3 @@ Content-Type: application/json
   "email": "john@doe.com",
   "password": "Password123!"
 }
-
-// {
-//   "firstName": "John",
-//   "lastName": "Doe",
-//   "email": "john@doe.com",
-//   "password": "password123"
-// }
