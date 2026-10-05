@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { GetUsersParamsDto } from './dtos/get-users-param.dto';
+import { PatchUserDto } from './dtos/patch-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -39,9 +40,9 @@ export class UsersController {
   }
 
   @Patch()
-  public patchUser(@Body() body: any) {
-    console.log('body: ' + body);
+  public patchUser(@Body() patchUserDto: PatchUserDto) {
+    console.log('patchUserDto: ', patchUserDto);
 
-    return 'You sent a PATCH request to users endpoint';
+    return patchUserDto;
   }
 }
