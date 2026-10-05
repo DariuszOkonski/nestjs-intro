@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   Query,
 } from '@nestjs/common';
@@ -34,6 +35,13 @@ export class UsersController {
   public createUsers(@Body() createUserDto: CreateUserDto) {
     console.log('createUserDto: ', createUserDto);
 
-    return 'You sent a POST request to users endpont';
+    return 'You sent a POST request to users endpoint';
+  }
+
+  @Patch()
+  public patchUser(@Body() body: any) {
+    console.log('body: ' + body);
+
+    return 'You sent a PATCH request to users endpoint';
   }
 }
