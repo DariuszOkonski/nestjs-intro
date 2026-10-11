@@ -14,11 +14,9 @@ export class UsersService {
     limit: number,
     page: number,
   ) {
-    console.log('=== GET request in UsersService ===');
-    console.log('params id: ', getUserParamDto);
-    console.log('query limit: ', limit);
-    console.log('query page: ', page);
-    console.log('===================');
+    const isAuth = this.authService.isAuth();
+
+    console.log('isAuth: ', isAuth);
 
     return [
       { firstName: 'John', email: 'john@doe.com' },
