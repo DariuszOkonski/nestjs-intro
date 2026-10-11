@@ -1,8 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import { GetUsersParamsDto } from '../dtos/get-users-param.dto';
+import { AuthService } from 'src/auth/providers/auth.service';
 
 @Injectable()
 export class UsersService {
+  constructor(
+    @Inject(forwardRef(() => AuthService))
+    private readonly authService: AuthService,
+  ) {}
+
   public findAll(
     getUserParamDto: GetUsersParamsDto,
     limit: number,
